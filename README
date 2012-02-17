@@ -1,0 +1,56 @@
+Introduction
+==============
+
+Vxk-blog is clone of blog app within flother django site. I have found this
+app simple, nice, easy so I decided to use it. I have removed dependencies on
+other flother apps and used another app for wisiwig editing - django-ckeditor.
+I also added i18n and tryed to make all as modular and easy as possible to
+make easily pluggable blog app for django.
+
+Installation
+==============
+
+1. Clone the read-only repo
+
+     git clone git://github.com/vencax/django-vxk-blog.git
+
+2. Install the dependencies via PIP.  (If you use virtualenv you'll want to
+   create a virtual environment and activate it first.)
+
+     pip install -r requirements.txt
+
+3. Add vxk-blog into your INSTALLED_APPS as well as other dependant apps.
+
+4. Include vxk-blog.urls into your root url conf.
+
+     url(r'^blogz/', include('vxk-blog.urls')),
+     
+5. You are done
+
+
+Management commands
+=====================
+
+There are three management commands in the project; each one is summarised
+below.  For more information read through the code as it's fairly well
+commented.
+
+django-admin.py publishnewentries
+
+    Because the site can be heavily cached (if you use the Static
+    Generator-created content you can serve the blog static HTML files), any
+    entry published in the future will only actually appear once the cache is
+    flushed, not once its publishing date has passed.  To ensure the entry
+    appears as expected, this command will check for entries whose
+    ``published_at`` field is within the last hour.  If there are any, the cache
+    will be cleared.
+
+    This command should be run as an hourly cron job.
+
+django-admin.py import_from_flickr
+
+    Imports public photos from a Flickr account (based on settings.FLICKR_NSID)
+    and stores them and their metadata in the database.
+
+    This command should be run as regularly if you want to download your photos
+    from Flickr.
