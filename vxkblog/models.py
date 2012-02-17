@@ -1,16 +1,11 @@
 import datetime
-import unicodedata
-import urllib2
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
-from django.contrib.comments.moderation import CommentModerator, moderator
-from django.core.mail import mail_managers
 from django.db import models
 from django.db.models import permalink
 from django.db.models import signals
-from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 from ckeditor import fields as ckedit_fields
@@ -44,7 +39,7 @@ class Entry(models.Model):
     slug = models.SlugField(verbose_name=_('slug'), 
         unique_for_year='published_at')
     standfirst = models.CharField(verbose_name=_('standfirst'), 
-        max_length=256, blank=True)
+        max_length=256)
     content = ckedit_fields.RichTextField(verbose_name=_('content'), 
         blank=True)
     author = models.ForeignKey(User)

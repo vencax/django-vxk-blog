@@ -2,8 +2,8 @@ import datetime
 
 from django.core.management.base import NoArgsCommand
 
-from vxk-blog.models import Entry
-from vxk-blog.signals import delete_blog_index
+from vxkblog.models import Entry
+from vxkblog.signals import delete_blog_index
 
 
 class Command(NoArgsCommand):

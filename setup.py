@@ -26,5 +26,5 @@ setup(
     author='vencax',
     author_email='vencax@centrum.cz',
     url='https://github.com/vencax/django-vxk-blog',
-    packages=['vxk-blog'],
+    packages=['vxkblog'],
 )

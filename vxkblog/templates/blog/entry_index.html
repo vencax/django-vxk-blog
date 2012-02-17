@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% load blogutils i18n %}
+
+{% block headtitle %}Blog{% endblock %}
+
+{% block content %}
+	<h2>Blogs</h2>
+	<div id="newestblogs">
+		{% newestblogs 6 %}
+	</div>
+	
+	{% yearswithblogs %}
+{% endblock %}

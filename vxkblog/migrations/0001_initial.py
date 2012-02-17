@@ -9,11 +9,11 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'Entry'
-        db.create_table('vxk-blog_entry', (
+        db.create_table('vxkblog_entry', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
-            ('standfirst', self.gf('django.db.models.fields.CharField')(max_length=256, blank=True)),
+            ('standfirst', self.gf('django.db.models.fields.CharField')(max_length=256)),
             ('content', self.gf('ckeditor.fields.RichTextField')(blank=True)),
             ('author', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
@@ -22,13 +22,13 @@ class Migration(SchemaMigration):
             ('status', self.gf('django.db.models.fields.SmallIntegerField')(default=1)),
             ('enable_comments', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal('vxk-blog', ['Entry'])
+        db.send_create_signal('vxkblog', ['Entry'])
 
 
     def backwards(self, orm):
         
         # Deleting model 'Entry'
-        db.delete_table('vxk-blog_entry')
+        db.delete_table('vxkblog_entry')
 
 
     models = {
@@ -68,7 +68,7 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'vxk-blog.entry': {
+        'vxkblog.entry': {
             'Meta': {'ordering': "('-published_at',)", 'object_name': 'Entry'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'content': ('ckeditor.fields.RichTextField', [], {'blank': 'True'}),
@@ -77,11 +77,11 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'published_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'}),
-            'standfirst': ('django.db.models.fields.CharField', [], {'max_length': '256', 'blank': 'True'}),
+            'standfirst': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
             'status': ('django.db.models.fields.SmallIntegerField', [], {'default': '1'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
         }
     }
 
-    complete_apps = ['vxk-blog']
+    complete_apps = ['vxkblog']

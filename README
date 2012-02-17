@@ -1,7 +1,7 @@
 Introduction
 ==============
 
-Vxk-blog is clone of blog app within flother django site. I have found this
+Vxkblog is clone of blog app within flother django site. I have found this
 app simple, nice, easy so I decided to use it. I have removed dependencies on
 other flother apps and used another app for wisiwig editing - django-ckeditor.
 I also added i18n and tryed to make all as modular and easy as possible to
@@ -19,11 +19,11 @@ Installation
 
      pip install -r requirements.txt
 
-3. Add vxk-blog into your INSTALLED_APPS as well as other dependant apps.
+3. Add vxkblog into your INSTALLED_APPS as well as other dependant apps.
 
-4. Include vxk-blog.urls into your root url conf.
+4. Include vxkblog.urls into your root url conf.
 
-     url(r'^blogz/', include('vxk-blog.urls')),
+     url(r'^blogz/', include('vxkblog.urls')),
      
 5. You are done
 

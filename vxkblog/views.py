@@ -5,24 +5,6 @@ from django.template import RequestContext
 
 from models import Entry
 
-
-def entry_index(request):
-    """
-    Output the latest eleven published blog entries, with the most recent
-    of those output in full.
-    """
-    latest_entry = Entry.objects.latest()
-    recent_entries = Entry.objects.published().exclude(id=latest_entry.id)[:10]
-    years_with_entries = Entry.objects.published().dates('published_at', 'year')
-    context = {
-        'latest_entry': latest_entry,
-        'recent_entries': recent_entries,
-        'years_with_entries': years_with_entries,
-    }
-    return render_to_response('blog/entry_index.html', context,
-        RequestContext(request))
-
-
 def entry_archive_year(request, year):
     """Output the published blog entries for a given year."""
     entries = get_list_or_404(Entry.objects.published(), published_at__year=year)

@@ -4,6 +4,7 @@ from django import template
 from django.conf import settings
 from django.utils.html import escape
 from django.utils.hashcompat import md5_constructor
+from vxkblog.models import Entry
 from django.utils.translation import ugettext as _
 
 register = template.Library()
@@ -41,6 +42,14 @@ def nextblog(blog):
     if next:
         return _get_nav_button_content('nextentry', _('Next'), next)
     return ''
+
+@register.inclusion_tag('blog/newestblogs.html')
+def newestblogs(count=5):
+    return {'blogs': Entry.objects.all()[:count]}
+
+@register.inclusion_tag('blog/yearswithblogs.html')
+def yearswithblogs():
+    return {'years': Entry.objects.published().dates('published_at', 'year')}
         
 @register.simple_tag
 def prevblog(blog):
