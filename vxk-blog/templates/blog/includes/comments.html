@@ -1,0 +1,47 @@
+{% load comments blogutils i18n %}
+
+{% get_comment_count for entry as comment_count %}
+{% if comment_count or entry.allow_new_comment %}
+<div id="comments">
+	<h3>{% trans "Commentary" %}</h3>
+	{% if comment_count %}
+		{% get_comment_list for entry as comment_list %}
+		<ol>
+		{% for comment in comment_list %}
+			<li{% if comment.user.is_staff %} class="{{ comment.user.username }}"{% endif %} id="comment{{ comment.id }}">
+				<div>
+					{% if comment.is_removed %}
+					<p><em>{% trans "This comment has been removed." %}</em></p>
+					{% else %}
+					{{ comment.comment|urlizetrunc:60|linebreaks }}
+					{% endif %}
+				</div>
+				<p class="metadata">
+					{% gravatarimg comment.userinfo.email %}
+					<span>
+						{% if comment.userinfo.url and not comment.is_removed %}
+						<a href="{{ comment.userinfo.url }}" 
+							title="{{ comment.name|title }}’s website">
+							{{ comment.userinfo.name|title }}
+						</a>
+						{% else %}
+						{{ comment.userinfo.name|title }}
+						{% endif %}
+					</span>
+					<span>{{ comment.submit_date|date:"jS F Y" }}</span>
+				</p>
+			</li>
+		{% endfor %}
+		</ol>
+	{% endif %}
+	{% if entry.allow_new_comment %}
+		{% render_comment_form for entry %}
+	{% else %}
+		{% if entry.enable_comments %}
+		<p id="commentsclosed">
+			{% blocktrans %}Commenting is now closed. Comments were accepted on this entry only for the first {{ entry.DAYS_COMMENTS_ENABLED }} days.{% endblocktrans %}
+		</p>
+		{% endif %}
+	{% endif %}
+</div>
+{% endif %}

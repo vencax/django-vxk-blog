@@ -1,0 +1,13 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+
+{% block extrahead %}
+<link href="{% url blog_feeds %}" title="{% trans 'Latest blogs' %}" 
+	rel="alternate" type="application/rss+xml" />
+{% endblock %}
+
+{% block bodyclass %}blogentry{% endblock %}
+
+{% block content %}
+{% block blogcontent %}{% endblock %}
+{% endblock %}

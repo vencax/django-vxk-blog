@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load blogutils typogrify i18n %}
+
+{% block headtitle %}{{ entry.title|smartypants }}{% endblock %}
+
+{% block blogcontent %}
+<div id="entry">
+	<h2>{{ entry.title|smartypants|widont }}</h2>
+	
+	{% include "blog/includes/metadata.html" %}
+	
+	{% if entry.standfirst %}
+	<p id="standfirst">
+		{{ entry.standfirst|widont|smartypants }}
+	</p>
+	{% endif %}
+	
+	{{ entry.content|safe }}
+	
+	{% blognavigation entry %}
+	
+	<hr class="clearer"/>
+	
+	{% include "blog/includes/comments.html" %}
+</div>	
+{% endblock %}
