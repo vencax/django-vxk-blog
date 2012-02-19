@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import permission_required
 
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.template import RequestContext
-from django.contrib.contenttypes.models import ContentTypeManager, ContentType
+from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 if 'tagging' in settings.INSTALLED_APPS:
     from tagging.models import TaggedItem, Tag
