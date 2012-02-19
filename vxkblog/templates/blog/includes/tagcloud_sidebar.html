@@ -1,0 +1,10 @@
+{% load tagging_tags %}
+
+<div id="sidebar">
+	<div class="tagbox">
+    {% tag_cloud_for_model vxkblog.Entry as entry_tags with steps=10 min_count=1 distribution=log %}
+    {% for tag in entry_tags %}
+        <a class="tag{{ tag.font_size }}" href="{% url blog_entry_by_tag tag.id %}">{{ tag }}</a>
+    {% endfor %}
+	</div>
+</div>

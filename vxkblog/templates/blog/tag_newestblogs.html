@@ -1,9 +1,9 @@
 
 {% for blog in blogs %}
-<div class="">
-	<a href="{{ blog.get_absloute_url }}">{{ blog.title }}</a>
+<div class="blogannoce_item">
+	<a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
 	<p>{{ blog.standfirst }}</p>
-	<div class="metadata">
+	<div class="bloginfo">
 		<span class="author">{{ blog.author }}</span>
 		<span class="publishdate">{{ blog.created_at }}</span>
 	</div>

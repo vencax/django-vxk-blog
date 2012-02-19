@@ -10,7 +10,7 @@ from django.utils.translation import ugettext as _
 register = template.Library()
 
 
-DEFAULT_GRAVATAR_IMAGE = '%score/img/avatar.png' % settings.MEDIA_URL
+DEFAULT_GRAVATAR_IMAGE = '%img/avatar.png' % settings.STATIC_URL
 GRAVATAR_RATING = 'r'
 PULLQUOTE_RE = re.compile(r'<blockquote\sclass="pullquote">.+?</blockquote>',
     re.UNICODE)
@@ -24,11 +24,11 @@ def gravatarimg(email, size=32):
     return '<img alt="Gravatar" height="%s" src="%s" width="%s" />' % (size,
         escape(url), size)
     
-def _get_nav_button_content(id, label, entry):
+def _get_nav_button_content(clsid, label, entry):
     """ Help method for blognavigation tag """
     return unicode(
         '<p class="%s">%s: <a href="%s">%s</a> <span>%s</span></p>' %\
-            (id, label, entry.get_absolute_url(), entry.title, 
+            (clsid, label, entry.get_absolute_url(), entry.title, 
              entry.published_at)
         )
         
@@ -38,16 +38,35 @@ def blognavigation(blog):
 
 @register.simple_tag
 def nextblog(blog):
-    next = blog.get_next_published_entry()
-    if next:
-        return _get_nav_button_content('nextentry', _('Next'), next)
+    nextbl = blog.get_next_published_entry()
+    if nextbl:
+        return _get_nav_button_content('nextentry', _('Next'), nextbl)
     return ''
 
-@register.inclusion_tag('blog/newestblogs.html')
+@register.simple_tag
+def bloginfo(blog, length_standfirst=100):
+    blogtitle = blog.title
+    return """
+        <a href="%s">%s</a>
+        %s
+        <p>%s</p>
+    """ % (blog.get_absolute_url(), blogtitle, 
+           blogmeta(blog), blog.standfirst[:length_standfirst])
+
+@register.simple_tag    
+def blogmeta(blog):
+    return """
+    <div class="bloginfo">
+        <span class="author">%s</span> 
+        <span class="publishdate">%s</span>
+    </div>
+    """ % (blog.created_at, blog.author)
+
+@register.inclusion_tag('blog/tag_newestblogs.html')
 def newestblogs(count=5):
     return {'blogs': Entry.objects.all()[:count]}
 
-@register.inclusion_tag('blog/yearswithblogs.html')
+@register.inclusion_tag('blog/tag_yearswithblogs.html')
 def yearswithblogs():
     return {'years': Entry.objects.published().dates('published_at', 'year')}
         
@@ -55,7 +74,7 @@ def yearswithblogs():
 def prevblog(blog):
     prev = blog.get_previous_published_entry()
     if prev:
-        retval += _get_nav_button_content('previousentry', _('Previous'), prev)
+        return _get_nav_button_content('previousentry', _('Previous'), prev)
     return ''
 
 @register.filter

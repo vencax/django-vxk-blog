@@ -1,6 +1,0 @@
-
-<ul class="yeararchives">
-{% for year in years %}
-	<li><a href="{% url blog_entry_archive_year year|date:"Y" %}">{{ year|date:"Y" }}</a></li>
-{% endfor %}
-</ul>

@@ -3,7 +3,7 @@
 {% get_comment_count for entry as comment_count %}
 {% if comment_count or entry.allow_new_comment %}
 <div id="comments">
-	<h3>{% trans "Commentary" %}</h3>
+	<h3>{% trans "Comments" %}</h3>
 	{% if comment_count %}
 		{% get_comment_list for entry as comment_list %}
 		<ol>

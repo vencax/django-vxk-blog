@@ -2,6 +2,10 @@ from django.contrib.auth.decorators import permission_required
 
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.template import RequestContext
+from django.contrib.contenttypes.models import ContentTypeManager, ContentType
+from django.conf import settings
+if 'tagging' in settings.INSTALLED_APPS:
+    from tagging.models import TaggedItem, Tag
 
 from models import Entry
 
@@ -22,6 +26,19 @@ def entry_archive_year(request, year):
     return render_to_response('blog/entry_archive_year.html', context,
         RequestContext(request))
 
+def entry_tag_list(request, tagid):
+    """Output the published blog entries for a given tag."""
+    tag = get_object_or_404(Tag, id=int(tagid))
+    entry_c_type = ContentType.objects.get_for_model(Entry)
+    taggedObjs = TaggedItem.objects.filter(tag=tag, content_type=entry_c_type)
+    blogz = Entry.objects.filter(
+        id__in=taggedObjs.values_list('object_id', flat=True))
+    context = {
+        'blogs' : blogz,
+        'tag' : tag
+    }
+    return render_to_response('blog/entry_by_tag.html', context,
+        RequestContext(request))
 
 def entry_detail(request, year, slug):
     """

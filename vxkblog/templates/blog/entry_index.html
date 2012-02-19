@@ -1,13 +1,22 @@
 {% extends "blog/base.html" %}
 {% load blogutils i18n %}
 
-{% block headtitle %}Blog{% endblock %}
+{% block bodyclass %}{{ block.super }} sidebared{% endblock %}
+
+{% block title %}{% trans "entries" %}{% endblock %}
 
 {% block content %}
+<div id="content">
 	<h2>Blogs</h2>
 	<div id="newestblogs">
 		{% newestblogs 6 %}
 	</div>
 	
 	{% yearswithblogs %}
+
+</div>
+
+{% include "blog/includes/tagcloud_sidebar.html" %}
+
 {% endblock %}
+

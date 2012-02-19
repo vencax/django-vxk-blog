@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-17 09:44+0100\n"
+"POT-Creation-Date: 2012-02-19 09:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,86 +22,77 @@ msgstr ""
 msgid "Latest blogs"
 msgstr "Nejnovější blogy"
 
-#: models.py:38
+#: models.py:33
 msgid "Draft"
 msgstr "Koncept"
 
-#: models.py:39
+#: models.py:34
 msgid "Published"
 msgstr "Publikováno"
 
-#: models.py:40
+#: models.py:35
 msgid "Private"
 msgstr "Soukromé"
 
-#: models.py:43
+#: models.py:38
 msgid "title"
 msgstr "Titulek"
 
-#: models.py:44
+#: models.py:39
 msgid "slug"
 msgstr "Slug"
 
-#: models.py:46
+#: models.py:41
 msgid "standfirst"
 msgstr "Úvod"
 
-#: models.py:48
+#: models.py:43
 msgid "content"
 msgstr "Obsah"
 
-#: models.py:51
+#: models.py:46
 msgid "created_at"
 msgstr "Vytvořeno"
 
-#: models.py:54
+#: models.py:49
 msgid "date published"
 msgstr "Publikováno"
 
-#: models.py:56
+#: models.py:51
 msgid "date updated"
 msgstr "Upraveno"
 
-#: models.py:57
+#: models.py:52
 msgid "status"
 msgstr "Status"
 
-#: models.py:60
+#: models.py:55
 msgid "enable_comments"
 msgstr "Zapnout komentáře"
 
-#: models.py:68
+#: models.py:63
 msgid "entry"
 msgstr "Blog"
 
-#: models.py:69
+#: models.py:64
 msgid "entries"
 msgstr "Blogy"
 
-#: models.py:102
+#: models.py:97
 msgid "Comments allowed"
 msgstr "Komentáře povoleny"
 
 #: templates/blog/entry_archive_year.html:4
-#: templates/blog/entry_archive_year.html:5
 msgid "Blog entries in"
 msgstr "Blogy v roce"
 
-#: templates/blog/entry_index.html:20
-msgid "comment"
-msgstr "kometářů"
-
-#: templates/blog/entry_index.html:22
-msgid "Leave a comment"
-msgstr "Okomentujte"
-
-#: templates/blog/entry_index.html:31
-msgid "Earlier entries"
-msgstr "Předchozí blogy"
+#: templates/blog/entry_by_tag.html:4
+msgid "Blog entries witg tag"
+msgstr "Blogy s tagem"
 
 #: templates/blog/includes/comments.html:6
-msgid "Commentary"
-msgstr "Komentáře"
+msgid "Comments"
+msgstr "kometáře"
 
 #: templates/blog/includes/comments.html:14
 msgid "This comment has been removed."
@@ -111,13 +102,13 @@ msgstr "Komentář byl odebrán"
 #, python-format
 msgid ""
 "Commenting is now closed. Comments were accepted on this entry only for the "
-"first %s days."
+"first %(entry.DAYS_COMMENTS_ENABLED)s days."
 msgstr "Komentování je uzavřeno. (bylo povoleno %s dní po vložení blogu)."
 
-#: templatetags/blogutils.py:39
+#: templatetags/blogutils.py:43
 msgid "Next"
 msgstr "Další"
 
-#: templatetags/blogutils.py:45
+#: templatetags/blogutils.py:77
 msgid "Previous"
 msgstr "Předchozí"

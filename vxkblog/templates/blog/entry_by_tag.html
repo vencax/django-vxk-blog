@@ -1,21 +1,19 @@
 {% extends "base.html" %}
 {% load blogutils typogrify i18n %}
 
-{% block title %}{% trans "Blog entries in" %} {{ year }}{% endblock %}
+{% block title %}{% trans "Blog entries witg tag" %} {{ tag }}{% endblock %}
 
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
 {% block content %}
 	<div id="entries">
-		{% if entries %}
 		<ul>
-			{% for blog in entries %}
+			{% for blog in blogs %}
 			<li class="{% cycle odd,even %}">
 				{% bloginfo blog %}
 			</li>
 			{% endfor %}
 		</ul>
-		{% endif %}
 	</div>
 	
 	{% yearswithblogs %}
