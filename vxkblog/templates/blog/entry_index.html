@@ -1,6 +1,10 @@
 {% extends "blog/base.html" %}
 {% load blogutils i18n %}
 
+{% block breadcrumb %}{{ block.super }}
+<li class="selected">&raquo; {% trans "entries" %}</li>
+{% endblock %}
+
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
 {% block title %}{% trans "entries" %}{% endblock %}

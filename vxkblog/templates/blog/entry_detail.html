@@ -5,6 +5,11 @@
 
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
+{% block breadcrumb %}{{ block.super }}
+<li>&raquo; <a href="{% url blog_entry_index %}">{% trans "entries" %}</a></li>
+<li class="selected">&raquo; {{ entry.title }}</li>
+{% endblock %}
+
 {% block content %}
 <div id="entry">
 	<h2>{{ entry.title|smartypants|widont }}</h2>

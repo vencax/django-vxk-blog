@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load blogutils typogrify i18n %}
 
+{% block breadcrumb %}{{ block.super }}
+<li>&raquo; <a href="{% url blog_entry_index %}">{% trans "entries" %}</a></li>
+<li class="selected">&raquo; {% trans "Blog entries in" %} {{ year }}</li>
+{% endblock %}
+
 {% block title %}{% trans "Blog entries in" %} {{ year }}{% endblock %}
 
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}

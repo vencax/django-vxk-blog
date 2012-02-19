@@ -3,6 +3,11 @@
 
 {% block title %}{% trans "Blog entries witg tag" %} {{ tag }}{% endblock %}
 
+{% block breadcrumb %}{{ block.super }}
+<li>&raquo; <a href="{% url blog_entry_index %}">{% trans "entries" %}</a></li>
+<li class="selected">&raquo; {% trans "Blog entries witg tag" %} {{ tag }}</li>
+{% endblock %}
+
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
 {% block content %}
