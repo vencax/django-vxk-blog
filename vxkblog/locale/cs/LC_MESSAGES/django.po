@@ -103,7 +103,7 @@ msgstr "Komentář byl odebrán"
 msgid ""
 "Commenting is now closed. Comments were accepted on this entry only for the "
 "first %(entry.DAYS_COMMENTS_ENABLED)s days."
-msgstr "Komentování je uzavřeno. (bylo povoleno %s dní po vložení blogu)."
+msgstr "Komentování je uzavřeno. (bylo povoleno %(entry.DAYS_COMMENTS_ENABLED)s dní po vložení blogu)."
 
 #: templatetags/blogutils.py:43
 msgid "Next"
