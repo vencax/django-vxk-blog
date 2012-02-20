@@ -1,6 +1,7 @@
 {% load tagging_tags %}
 
 <div id="sidebar">
+	<h3>Tag cloud</h3>
 	<div class="tagbox">
     {% tag_cloud_for_model vxkblog.Entry as entry_tags with steps=10 min_count=1 distribution=log %}
     {% for tag in entry_tags %}

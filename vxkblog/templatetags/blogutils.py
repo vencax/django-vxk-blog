@@ -10,7 +10,7 @@ from django.utils.translation import ugettext as _
 register = template.Library()
 
 
-DEFAULT_GRAVATAR_IMAGE = '%img/avatar.png' % settings.STATIC_URL
+DEFAULT_GRAVATAR_IMAGE = '%simg/avatar.png' % settings.STATIC_URL
 GRAVATAR_RATING = 'r'
 PULLQUOTE_RE = re.compile(r'<blockquote\sclass="pullquote">.+?</blockquote>',
     re.UNICODE)

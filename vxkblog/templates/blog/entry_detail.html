@@ -11,26 +11,27 @@
 {% endblock %}
 
 {% block content %}
-<div id="entry">
-	<h2>{{ entry.title|smartypants|widont }}</h2>
-	
-	{% blogmeta entry %}
-	
-	<p id="standfirst">
-		{{ entry.standfirst|widont|smartypants }}
-	</p>
-	
-	{{ entry.content|safe }}
-	
-	<hr class="clearer"/>
-	
-	{% blognavigation entry %}
-	
-	<hr class="clearer"/>
-	
-	{% include "blog/includes/comments.html" %}
+<div id="content">
+	<div id="entry">
+		<h2>{{ entry.title|smartypants|widont }}</h2>
+		
+		{% blogmeta entry %}
+		
+		<p id="standfirst">
+			{{ entry.standfirst|widont|smartypants }}
+		</p>
+		
+		{{ entry.content|safe }}
+		
+		<hr class="clearer"/>
+		
+		{% blognavigation entry %}
+		
+		<hr class="clearer"/>
+		
+		{% include "blog/includes/comments.html" %}
+	</div>
 </div>
-
 {% include "blog/includes/tagcloud_sidebar.html" %}
 
 {% endblock %}

@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/vxk-blog.css" />
 <link href="{% url blog_feeds %}" title="{% trans 'Latest blogs' %}" 
 	rel="alternate" type="application/rss+xml" />
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 {% load blogutils typogrify i18n %}
 
 {% block breadcrumb %}{{ block.super }}
@@ -11,6 +11,7 @@
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
 {% block content %}
+<div id="content">
 	<div id="entries">
 		{% if entries %}
 		<ul>
@@ -24,6 +25,6 @@
 	</div>
 	
 	{% yearswithblogs %}
-	
+</div>
 	{% include "blog/includes/tagcloud_sidebar.html" %}
 {% endblock %}
