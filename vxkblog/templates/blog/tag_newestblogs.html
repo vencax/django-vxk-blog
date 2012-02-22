@@ -1,6 +1,6 @@
 
 {% for blog in blogs %}
-<div class="blogannoce_item">
+<div class="relative">
 	<a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
 	<p>{{ blog.standfirst }}</p>
 	<div class="bloginfo">

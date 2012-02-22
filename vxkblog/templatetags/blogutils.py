@@ -60,7 +60,7 @@ def blogmeta(blog):
         <span class="author">%s</span> 
         <span class="publishdate">%s</span>
     </div>
-    """ % (blog.created_at, blog.author)
+    """ % (blog.author, blog.created_at)
 
 @register.inclusion_tag('blog/tag_newestblogs.html')
 def newestblogs(count=5):

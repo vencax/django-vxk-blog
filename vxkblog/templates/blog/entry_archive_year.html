@@ -16,7 +16,7 @@
 		{% if entries %}
 		<ul>
 			{% for blog in entries %}
-			<li class="{% cycle odd,even %}">
+			<li class="{% cycle odd,even %} relative">
 				{% bloginfo blog %}
 			</li>
 			{% endfor %}
