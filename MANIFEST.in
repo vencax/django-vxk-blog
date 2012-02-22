@@ -1,2 +1,5 @@
-recursive-include vxkblog *
-global-exclude *.pyc
+include LICENSE
+include README
+recursive-include vxkblog/static *
+recursive-include vxkblog/templates *
+recursive-include vxkblog/locale *
