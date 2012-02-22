@@ -19,7 +19,8 @@ setup(
         'django-haystack',
         'south',
         'postmarkup',
-        'setuptools'
+        'setuptools',
+        'django-ckeditor',
     ],
     description=description,
     long_description=long_description,
@@ -27,4 +28,5 @@ setup(
     author_email='vencax@centrum.cz',
     url='https://github.com/vencax/django-vxk-blog',
     packages=find_packages(),
+    keywords="django blog",
 )
