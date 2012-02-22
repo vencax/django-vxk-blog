@@ -29,4 +29,5 @@ setup(
     url='https://github.com/vencax/django-vxk-blog',
     packages=find_packages(),
     keywords="django blog",
+    include_package_data=True,
 )
