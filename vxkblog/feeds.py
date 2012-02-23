@@ -18,9 +18,8 @@ class LatestEntries(Feed):
     title_template = 'feeds/latest_title.html'
     description_template = 'feeds/latest_description.html'
 
-    def link(self):
-        from views import entry_index
-        return reverse(entry_index)
+    def link(self, item):
+        return reverse('blog_entry_index')
 
     def items(self):
         return Entry.objects.published().select_related()[:10]
