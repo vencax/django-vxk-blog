@@ -10,8 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from ckeditor import fields as ckedit_fields
 from managers import EntryManager
-from signals import delete_blog_index,\
-    clear_stagnant_cache_on_comment_change
 
 try:
     DAYS_COMMENTS_ENABLED = settings.DAYS_COMMENTS_ENABLED
@@ -119,10 +117,15 @@ class Entry(models.Model):
         except Entry.DoesNotExist:
             return None
 
+static_gen_cls_name = 'staticgenerator.middleware.StaticGeneratorMiddleware'
 
-signals.post_delete.connect(delete_blog_index, sender=Entry)
-signals.post_save.connect(delete_blog_index, sender=Entry)
-signals.post_delete.connect(clear_stagnant_cache_on_comment_change,
-    sender=Comment)
-signals.post_save.connect(clear_stagnant_cache_on_comment_change,
-    sender=Comment)
+if static_gen_cls_name in settings.MIDDLEWARE_CLASSES:
+    from signals import delete_blog_index,\
+      clear_stagnant_cache_on_comment_change
+    
+    signals.post_delete.connect(delete_blog_index, sender=Entry)
+    signals.post_save.connect(delete_blog_index, sender=Entry)
+    signals.post_delete.connect(clear_stagnant_cache_on_comment_change,
+        sender=Comment)
+    signals.post_save.connect(clear_stagnant_cache_on_comment_change,
+        sender=Comment)
