@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-19 09:01+0100\n"
+"POT-Creation-Date: 2012-02-23 07:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,75 +18,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
-#: feeds.py:17 templates/blog/base.html:5
+#: feeds.py:17 templates/blog/base.html:6
 msgid "Latest blogs"
 msgstr "Nejnovější blogy"
 
-#: models.py:33
+#: models.py:31
 msgid "Draft"
 msgstr "Koncept"
 
-#: models.py:34
+#: models.py:32
 msgid "Published"
 msgstr "Publikováno"
 
-#: models.py:35
+#: models.py:33
 msgid "Private"
 msgstr "Soukromé"
 
-#: models.py:38
+#: models.py:36
 msgid "title"
 msgstr "Titulek"
 
-#: models.py:39
+#: models.py:37
 msgid "slug"
 msgstr "Slug"
 
-#: models.py:41
+#: models.py:39
 msgid "standfirst"
 msgstr "Úvod"
 
-#: models.py:43
+#: models.py:41
 msgid "content"
 msgstr "Obsah"
 
-#: models.py:46
+#: models.py:44
 msgid "created_at"
 msgstr "Vytvořeno"
 
-#: models.py:49
+#: models.py:47
 msgid "date published"
 msgstr "Publikováno"
 
-#: models.py:51
+#: models.py:49
 msgid "date updated"
 msgstr "Upraveno"
 
-#: models.py:52
+#: models.py:50
 msgid "status"
 msgstr "Status"
 
-#: models.py:55
+#: models.py:53
 msgid "enable_comments"
 msgstr "Zapnout komentáře"
 
-#: models.py:63
+#: models.py:61
 msgid "entry"
 msgstr "Blog"
 
-#: models.py:64
+#: models.py:62 templates/blog/entry_archive_year.html:5
+#: templates/blog/entry_by_tag.html:7 templates/blog/entry_detail.html:9
+#: templates/blog/entry_index.html:5 templates/blog/entry_index.html.py:10
 msgid "entries"
-msgstr "Blogy"
+msgstr "Články"
 
-#: models.py:97
+#: models.py:95
 msgid "Comments allowed"
 msgstr "Komentáře povoleny"
 
-#: templates/blog/entry_archive_year.html:4
+#: templates/blog/entry_archive_year.html:6
+#: templates/blog/entry_archive_year.html:9
 msgid "Blog entries in"
 msgstr "Blogy v roce"
 
-#: templates/blog/entry_by_tag.html:4
+#: templates/blog/entry_by_tag.html:4 templates/blog/entry_by_tag.html.py:8
 msgid "Blog entries witg tag"
 msgstr "Blogy s tagem"
 
@@ -103,7 +106,9 @@ msgstr "Komentář byl odebrán"
 msgid ""
 "Commenting is now closed. Comments were accepted on this entry only for the "
 "first %(entry.DAYS_COMMENTS_ENABLED)s days."
-msgstr "Komentování je uzavřeno. (bylo povoleno %(entry.DAYS_COMMENTS_ENABLED)s dní po vložení blogu)."
+msgstr ""
+"Komentování je uzavřeno. (bylo povoleno %(entry.DAYS_COMMENTS_ENABLED)s dní "
+"po vložení blogu)."
 
 #: templatetags/blogutils.py:43
 msgid "Next"
