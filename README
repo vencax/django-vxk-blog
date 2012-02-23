@@ -25,7 +25,16 @@ Installation
 
      url(r'^blogz/', include('vxkblog.urls')),
      
-5. You are done
+5. (OPTIONAL) staticgenerator.
+     
+If you want your blogs to be chached is static files fo speedup
+of thier serving, you have to install staticgenerator and put:
+
+		'staticgenerator.middleware.StaticGeneratorMiddleware',
+		
+among your MIDDLEWARE_CLASSES.
+     
+6. You are done
 
 
 Management commands
