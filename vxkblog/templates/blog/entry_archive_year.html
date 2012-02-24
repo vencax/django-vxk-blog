@@ -11,17 +11,16 @@
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
 {% block content %}
+<h2>{% trans "Blog entries in" %} {{ year }}</h2>
 <div id="content">
-	<div id="entries">
-		{% if entries %}
+	<div id="entrylist">
 		<ul>
 			{% for blog in entries %}
-			<li class="{% cycle odd,even %} relative">
+			<li class="{% cycle odd,even %}">
 				{% bloginfo blog %}
 			</li>
 			{% endfor %}
 		</ul>
-		{% endif %}
 	</div>
 	
 	{% yearswithblogs %}

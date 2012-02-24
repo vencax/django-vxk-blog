@@ -21,6 +21,7 @@ setup(
         'postmarkup',
         'setuptools',
         'django-ckeditor',
+        'git+git://github.com/nvie/django-gravatar.git'
     ],
     description=description,
     long_description=long_description,

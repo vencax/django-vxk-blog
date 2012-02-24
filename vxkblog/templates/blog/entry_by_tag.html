@@ -11,11 +11,12 @@
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
 {% block content %}
+<h2>{% trans "Blog entries witg tag" %} {{ tag }}</h2>
 <div id="content">
-	<div id="entries">
+	<div id="entrylist">
 		<ul>
 			{% for blog in blogs %}
-			<li class="{% cycle odd,even %} relative">
+			<li class="{% cycle odd,even %}">
 				{% bloginfo blog %}
 			</li>
 			{% endfor %}

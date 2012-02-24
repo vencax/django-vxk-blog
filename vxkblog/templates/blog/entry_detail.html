@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load blogutils typogrify i18n %}
+{% load blogutils typogrify gravatar i18n %}
 
 {% block title %}{{ entry.title|smartypants }}{% endblock %}
 
@@ -17,20 +17,21 @@
 		
 		{% blogmeta entry %}
 		
-		<p id="standfirst">
+		<img src="{% gravatar_for_user entry.author 70 %}" alt="avatar img" class="avatar" />
+		
+		<p class="standfirst">
 			{{ entry.standfirst|widont|smartypants }}
 		</p>
 		
 		{{ entry.content|safe }}
-		
-		<hr class="clearer"/>
-		
-		{% blognavigation entry %}
-		
-		<hr class="clearer"/>
-		
-		{% include "blog/includes/comments.html" %}
 	</div>
+	<hr class="clearer"/>
+		
+	{% blognavigation entry %}
+		
+	<hr class="clearer"/>
+		
+	{% include "blog/includes/comments.html" %}
 </div>
 {% include "blog/includes/tagcloud_sidebar.html" %}
 

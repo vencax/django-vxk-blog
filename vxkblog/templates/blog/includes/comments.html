@@ -1,4 +1,4 @@
-{% load comments blogutils i18n %}
+{% load comments blogutils gravatar i18n %}
 
 {% get_comment_count for entry as comment_count %}
 {% if comment_count or entry.allow_new_comment %}
@@ -17,7 +17,7 @@
 					{% endif %}
 				</div>
 				<p class="metadata">
-					{% gravatarimg comment.userinfo.email %}
+					<img src="{% gravatar_for_email comment.userinfo.email 40 %} alt="avatar img" class="avatar" />
 					<span>
 						{% if comment.userinfo.url and not comment.is_removed %}
 						<a href="{{ comment.userinfo.url }}" 

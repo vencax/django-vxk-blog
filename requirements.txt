@@ -5,4 +5,5 @@ django-compress==1.0.1
 typogrify
 smartypants==1.6.0.3
 git+git://github.com/dwaiter/django-ckeditor.git
+git+git://github.com/nvie/django-gravatar.git
 -e svn+http://typogrify.googlecode.com/svn/trunk@16#egg=typogrify-1.0-py2.5-dev_r16
