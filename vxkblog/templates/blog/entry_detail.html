@@ -15,7 +15,9 @@
 	<div id="entry" class="relative">
 		<h2>{{ entry.title|smartypants|widont }}</h2>
 		
-		{% blogmeta entry %}
+		<div class="bloginfo">
+			{% blogmeta entry %}
+		</div>
 		
 		<img src="{% gravatar_for_user entry.author 70 %}" alt="avatar img" class="avatar" />
 		

@@ -29,8 +29,12 @@ def nextblog(blog):
     return ''
 
 @register.simple_tag
-def bloginfo(blog, length_standfirst=100):
+def bloginfo(blog, length_standfirst=None):
     blogtitle = blog.title
+    if length_standfirst:
+        standfirst = blog.standfirst[:length_standfirst] + '...'
+    else:
+        standfirst = blog.standfirst
     return """
         <div>
             <a href="%s">%s</a>
@@ -38,7 +42,7 @@ def bloginfo(blog, length_standfirst=100):
         </div>
         <p class="standfirst">%s</p>
     """ % (blog.get_absolute_url(), blogtitle, 
-           blogmeta(blog), blog.standfirst[:length_standfirst])
+           blogmeta(blog), standfirst)
 
 @register.simple_tag    
 def blogmeta(blog):
