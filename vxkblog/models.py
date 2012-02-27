@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from ckeditor import fields as ckedit_fields
 from managers import EntryManager
+from django.core.validators import MaxLengthValidator
 
 try:
     DAYS_COMMENTS_ENABLED = settings.DAYS_COMMENTS_ENABLED
@@ -33,11 +34,11 @@ class Entry(models.Model):
         (PRIVATE_STATUS, _('Private'))
     )
 
-    title = models.CharField(verbose_name=_('title'), max_length=128)
+    title = models.CharField(verbose_name=_('title'), max_length=64)
     slug = models.SlugField(verbose_name=_('slug'), 
         unique_for_year='published_at')
     standfirst = models.TextField(verbose_name=_('standfirst'), 
-        max_length=256)
+        max_length=256, validators=[MaxLengthValidator(256)])
     content = ckedit_fields.RichTextField(verbose_name=_('content'), 
         blank=True)
     author = models.ForeignKey(User)
