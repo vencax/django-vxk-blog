@@ -36,7 +36,7 @@ class Entry(models.Model):
     title = models.CharField(verbose_name=_('title'), max_length=128)
     slug = models.SlugField(verbose_name=_('slug'), 
         unique_for_year='published_at')
-    standfirst = models.CharField(verbose_name=_('standfirst'), 
+    standfirst = models.TextField(verbose_name=_('standfirst'), 
         max_length=256)
     content = ckedit_fields.RichTextField(verbose_name=_('content'), 
         blank=True)
