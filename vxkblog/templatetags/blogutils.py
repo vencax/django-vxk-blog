@@ -53,7 +53,7 @@ def blogmeta(blog):
 
 @register.inclusion_tag('blog/tag_newestblogs.html')
 def newestblogs(count=5):
-    return {'blogs': Entry.objects.all()[:count]}
+    return {'blogs': Entry.objects.published()[:count]}
 
 @register.inclusion_tag('blog/tag_yearswithblogs.html')
 def yearswithblogs():
