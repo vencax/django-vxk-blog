@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.db.models import Q
 
 from models import Entry
+from django.conf import settings
 
 class EntryAdmin(admin.ModelAdmin):
 
@@ -33,5 +34,18 @@ class EntryAdmin(admin.ModelAdmin):
             return Entry.objects.all()
         return Entry.objects.filter(
             Q(author=request.user) | Q(status=Entry.DRAFT_STATUS))
-
-admin.site.register(Entry, EntryAdmin)
+        
+if 'tagging' in settings.INSTALLED_APPS:
+    from tagging.models import TaggedItem
+    from django.contrib.contenttypes.generic import GenericTabularInline
+    
+    class TagsInline(GenericTabularInline):
+        model = TaggedItem
+        
+    class EntryAdminWithTagSupport(EntryAdmin):
+        inlines = [TagsInline,]
+    
+    admin.site.register(Entry, EntryAdminWithTagSupport)
+    
+else:
+    admin.site.register(Entry, EntryAdmin)
