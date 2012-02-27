@@ -46,10 +46,11 @@ def bloginfo(blog, length_standfirst=None):
 
 @register.simple_tag    
 def blogmeta(blog):
+    author = blog.author.get_full_name() or blog.author
     return """
     <span class="author">%s</span>,
     <span class="publishdate">%s</span>
-    """ % (unicode(blog.author), blog.created_at)
+    """ % (unicode(author), blog.created_at)
 
 @register.inclusion_tag('blog/tag_newestblogs.html')
 def newestblogs(count=5):

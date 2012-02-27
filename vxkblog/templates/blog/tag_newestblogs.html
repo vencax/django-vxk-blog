@@ -3,7 +3,7 @@
 <div>
 	<div>
 		<a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
-		<span class="author">{{ blog.author }}</span>
+		<span class="author">{{ blog.author.get_full_name|default:blog.author }}</span>
 		<span class="publishdate">{{ blog.created_at }}</span>
 	</div>
 	
