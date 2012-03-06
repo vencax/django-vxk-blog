@@ -35,6 +35,8 @@
 		
 	{% include "blog/includes/comments.html" %}
 </div>
-{% include "blog/includes/tagcloud_sidebar.html" %}
+{% endblock %}
 
+{% block sidebar %}{{ block.super }}
+{% include "blog/includes/tagcloud.html" %}
 {% endblock %}

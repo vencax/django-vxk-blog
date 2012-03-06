@@ -19,8 +19,9 @@
 	{% yearswithblogs %}
 
 </div>
+{% endblock %}
 
-{% include "blog/includes/tagcloud_sidebar.html" %}
-
+{% block sidebar %}{{ block.super }}
+{% include "blog/includes/tagcloud.html" %}
 {% endblock %}
 
