@@ -1,0 +1,12 @@
+{% load blogutils i18n %}
+
+<h3>{% trans 'Selected blogs' %}:</h3>
+<div class="randomItems">
+{% for b in blogs %}
+	<a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+	<div class="publishdate">{{ b.created_at }}</div>
+	{% blogimage b %}
+	<p>{{ b.standfirst }}</p>
+	<p><a href="{{ b.get_absolute_url }}">{% trans 'More' %}...</a></p>
+{% endfor %}
+</div>

@@ -3,11 +3,16 @@ import re
 from django import template
 from vxkblog.models import Entry
 from django.utils.translation import ugettext as _
+import datetime
+import random
 
 register = template.Library()
 
 PULLQUOTE_RE = re.compile(r'<blockquote\sclass="pullquote">.+?</blockquote>',
     re.UNICODE)
+
+IMG_PATTERN = re.compile(r'<img [^>]{1,}>')
+SRC_PATTERN = re.compile(r'src="(?P<src>[^"]{1,})"')
     
 def _get_nav_button_content(clsid, label, entry):
     """ Help method for blognavigation tag """
@@ -66,6 +71,30 @@ def prevblog(blog):
     if prev:
         return _get_nav_button_content('previousentry', _('Previous'), prev)
     return ''
+
+@register.inclusion_tag('blog/tag_randomblogs.html')  
+def randomblogs(count=3, deathlineDays=90):
+    deathline = datetime.datetime.now() - datetime.timedelta(deathlineDays)
+    ids = Entry.objects.filter(published_at__gt=deathline).\
+        values_list('id', flat=True)
+    retval = []
+    for _ in range(count):
+        randomBlog = random.choice(ids)
+        retval.append(randomBlog)
+    return {'blogs' : Entry.objects.filter(id__in=retval)}
+
+BLOGIMAGE_HTML = '<img src="%s" alt="%s %s" class="blogThumb" />'
+
+@register.simple_tag
+def blogimage(blog, pos=1):
+    result = IMG_PATTERN.search(blog.content)
+    if result:
+        imgTag = blog.content[result.start():result.end()]
+        srcResult = SRC_PATTERN.search(imgTag)
+        return BLOGIMAGE_HTML % (srcResult.group('src'),
+                                 blog.title, _('thumbnail'))
+    else:
+        return ''
 
 @register.filter
 def strip_pullquotes(copy):

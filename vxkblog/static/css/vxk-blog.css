@@ -8,3 +8,14 @@ box-shadow: 2px 2px 3px #222; }
 
 .previousentry { float: left; }
 .nextentry { float: right; }
+
+.blogThumb { 
+	float: left; margin: 0 5px 5px 0;
+	max-width: 80px; max-height: 100px;
+}
+
+.blogAnounce { 
+	width: 180px; 
+	margin:5px; padding: 10px; 
+	float: left; 
+}
