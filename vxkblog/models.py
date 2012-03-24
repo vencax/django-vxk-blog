@@ -12,6 +12,9 @@ from ckeditor import fields as ckedit_fields
 from managers import EntryManager
 from django.core.validators import MaxLengthValidator
 
+if 'tagging' in settings.INSTALLED_APPS:
+    from tagging.models import Tag
+
 try:
     DAYS_COMMENTS_ENABLED = settings.DAYS_COMMENTS_ENABLED
 except AttributeError:
@@ -55,6 +58,10 @@ class Entry(models.Model):
         default=False)
 
     objects = EntryManager()
+    
+    def get_tags(self):
+        if 'tagging' in settings.INSTALLED_APPS:
+            return Tag.objects.get_for_object(self) 
 
     class Meta:
         get_latest_by = 'published_at'

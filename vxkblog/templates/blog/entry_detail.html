@@ -2,6 +2,8 @@
 {% load blogutils typogrify gravatar i18n %}
 
 {% block title %}{{ entry.title|smartypants }}{% endblock %}
+{% block keywords %}{% for t in entry.get_tags %}{{ t }},{% endfor %}{% endblock %}
+{% block description %}{{ entry.standfirst }}{% endblock %}
 
 {% block bodyclass %}{{ block.super }} sidebared{% endblock %}
 
@@ -13,7 +15,7 @@
 {% block content %}
 <div id="content">
 	<div id="entry" class="relative">
-		<h2>{{ entry.title|smartypants|widont }}</h2>
+		<h1>{{ entry.title|smartypants|widont }}</h1>
 		
 		<div class="bloginfo">
 			{% blogmeta entry %}
